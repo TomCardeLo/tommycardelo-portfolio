@@ -13,6 +13,8 @@ export const SITE = {
   showBackButton: true,
   editPost: {
     enabled: false,
+    text: "Edit post",
+    url: "https://github.com/TomCardeLo/tommycardelo-portfolio/edit/main/",
   },
   dynamicOgImage: true,
   dir: "ltr",
