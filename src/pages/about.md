@@ -7,20 +7,43 @@ title: "About"
 
 ```python
 profile = {
-    "nombre": "Tommy CardeLo",
-    "rol_actual": "Data Scientist & Demand Planner @ Kimberly-Clark",
+    "nombre": "Tomás Cárdenas López",
+    "rol_actual": "LATAM Data Scientist & Demand Planner @ Kimberly-Clark",
+    "freelance": "Data Scientist & AI Consultant @ 2DATO",
     "siguiente_paso": "AI Engineer",
-    "stack": ["Python", "FastAPI", "PostgreSQL", "Docker", "GCP"],
-    "interes": ["Agentes de IA", "MLOps", "Time Series Forecasting"],
-    "ubicacion": "Colombia 🇨🇴",
+    "stack": ["Python", "SQL", "Databricks", "AWS", "Power BI", "Tableau"],
+    "intereses": ["Agentes de IA", "MLOps", "Forecasting", "LLMs"],
+    "ubicacion": "Bogotá, Colombia 🇨🇴",
+    "idiomas": ["Español (nativo)", "Inglés (avanzado)", "Japonés (básico)"],
 }
 ```
 
-## Lo que hago
+## Experiencia
 
-- **Demand Planning & Forecasting** con SARIMA, XGBoost, LightGBM y Bayesian Optimization
-- **Automatización con n8n** para procesos de negocio (contratos, reportes, agentes WhatsApp)
-- **Sistemas de IA** combinando LLMs con datos estructurados
+- **Freelance Data Scientist & AI Consultant · 2DATO** *(jul 2023 – presente)*  
+  Arquitectura de soluciones end-to-end con Databricks · ETL complejos · modelos ML (Isolation Forest) · analítica prescriptiva con LLMs · BI con Power BI
+
+- **LATAM Data Scientist & Demand Planner · Kimberly-Clark** *(jun 2023 – presente)*  
+  Proyecciones de ventas para Latinoamérica · Modelos estadísticos con SARIMA y Bayesian Optimization · Project Horizon
+
+- **Analytics & Operations Coordinator · Dispapeles** *(2017 – 2023)*  
+  Business Intelligence con Tableau y SQL · Analítica de operaciones y costos · Planificación estratégica
+
+## Formación
+
+| Título | Institución | Año |
+|--------|-------------|-----|
+| Máster en Applied Analytics (Data Science) | Universidad de La Sabana | 2022–2023 |
+| Especialista en Finanzas Algorítmicas | Universidad Externado de Colombia | 2020–2021 |
+| Administración de Empresas | CUE Alexander von Humboldt | 2013–2016 |
+
+## Certificaciones
+
+- Google AI — Google *(2026)*
+- Advanced Data Analytics Specialization — Google *(2025)*
+- Machine Learning with Python — Platzi *(2024)*
+- Supply Chain Data Analyst Specialization — Unilever *(2024)*
+- Data Scientist — Platzi *(2023)*
 
 ## Proyectos destacados
 
@@ -30,6 +53,6 @@ profile = {
 
 ## Contacto
 
-- Email: tommy@tommycardelo.com
+- Email: [contact@tommycardelo.com](mailto:contact@tommycardelo.com)
 - GitHub: [@TomCardeLo](https://github.com/TomCardeLo)
-- LinkedIn: [tu-linkedin]
+- LinkedIn: [tomcardelo96](https://linkedin.com/in/tomcardelo96)
