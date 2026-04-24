@@ -3,35 +3,33 @@ layout: ../layouts/AboutLayout.astro
 title: "About"
 ---
 
-AstroPaper is a minimal, accessible and SEO-friendly blog theme built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/).
+# `whoami`
 
-![Astro Paper](public/astropaper-og.jpg)
+```python
+profile = {
+    "nombre": "Tommy CardeLo",
+    "rol_actual": "Data Scientist & Demand Planner @ Kimberly-Clark",
+    "siguiente_paso": "AI Engineer",
+    "stack": ["Python", "FastAPI", "PostgreSQL", "Docker", "GCP"],
+    "interes": ["Agentes de IA", "MLOps", "Time Series Forecasting"],
+    "ubicacion": "Colombia 🇨🇴",
+}
+```
 
-AstroPaper provides a solid foundation for blogs, or even portfolios\_ with full markdown support, built-in dark mode, and a clean layout that works out-of-the-box.
+## Lo que hago
 
-The blog posts in this theme also serve as guides, docs or example articles\_ making AstroPaper a flexible starting point for your next content-driven site.
+- **Demand Planning & Forecasting** con SARIMA, XGBoost, LightGBM y Bayesian Optimization
+- **Automatización con n8n** para procesos de negocio (contratos, reportes, agentes WhatsApp)
+- **Sistemas de IA** combinando LLMs con datos estructurados
 
-## Features
+## Proyectos destacados
 
-AstroPaper comes with a set of useful features that make content publishing easy and effective:
+- [`boa-sarima-forecaster`](https://github.com/TomCardeLo/boa-sarima-forecaster): forecasting tool con optimización bayesiana
+- Pipeline de procesamiento de contratos con LLMs (en producción)
+- Bot de WhatsApp para tracking de hábitos con generación de reportes
 
-- SEO-friendly
-- Fast performance
-- Light & dark mode
-- Highly customizable
-- Organizable blog posts
-- Responsive & accessible
-- Static search with [PageFind](https://pagefind.app/)
-- Automatic social image generation
+## Contacto
 
-and so much more.
-
-## Show your support
-
-If you like [AstroPaper](https://github.com/satnaing/astro-paper), consider giving it a star ⭐️.
-
-Found a bug 🐛 or have an improvement ✨ in mind? Feel free to open an [issue](https://github.com/satnaing/astro-paper/issues), submit a [pull request](https://github.com/satnaing/astro-paper/pulls) or start a [discussion](https://github.com/satnaing/astro-paper/discussions).
-
-If you find this theme helpful, you can also [sponsor me on GitHub](https://github.com/sponsors/satnaing) or [buy me a coffee](https://buymeacoffee.com/satnaing) to show your support — every penny counts.
-
-Kyay zuu! 🙏🏼
+- Email: tommy@tommycardelo.com
+- GitHub: [@TomCardeLo](https://github.com/TomCardeLo)
+- LinkedIn: [tu-linkedin]

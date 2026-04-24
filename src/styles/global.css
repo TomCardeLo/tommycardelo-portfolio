@@ -5,19 +5,20 @@
 
 :root,
 html[data-theme="light"] {
-  --background: #fdfdfd;
-  --foreground: #282728;
-  --accent: #006cac;
-  --muted: #e6e6e6;
-  --border: #ece9e9;
+  --background: 250, 250, 250;
+  --foreground: 24, 24, 27;
+  --accent: 0, 100, 200;
+  --muted: 230, 230, 230;
+  --border: 220, 220, 220;
 }
 
 html[data-theme="dark"] {
-  --background: #212737;
-  --foreground: #eaedf3;
-  --accent: #ff6b01;
-  --muted: #343f60;
-  --border: #ab4b08;
+  --background: 10, 10, 12;
+  --foreground: 220, 220, 220;
+  --accent: 0, 230, 180;
+  /* verde terminal */
+  --muted: 35, 35, 40;
+  --border: 50, 50, 55;
 }
 
 @theme inline {
@@ -35,16 +36,20 @@ html[data-theme="dark"] {
     scrollbar-width: auto;
     scrollbar-color: var(--color-muted) transparent;
   }
+
   html {
     @apply overflow-y-scroll scroll-smooth;
   }
+
   body {
     @apply flex min-h-svh flex-col bg-background font-app text-foreground selection:bg-accent/75 selection:text-background;
   }
+
   a,
   button {
     @apply outline-offset-1 outline-accent focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-dashed;
   }
+
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;
