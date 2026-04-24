@@ -32,7 +32,9 @@ export const ui = {
     // Home hero
     "home.greeting": "Hi, I'm Tommy",
     "home.bio":
-      "Data Scientist & AI Engineer based in Bogotá. I work at the intersection of ML models, LLM automation, and data systems at scale. Currently at Kimberly-Clark (LATAM) and as an independent consultant at 2DATO.",
+      "Data Scientist & AI Engineer based in Bogotá. I work at the intersection of ML models, LLM automation, and data systems at scale. Currently at Kimberly-Clark (LATAM) and as an independent consultant at ",
+    "home.bioCompany": "2DATO",
+    "home.bioPost": ".",
     "home.readMorePre": "Explore my technical notes and projects, or check the",
     "home.readMoreLink": "About",
     "home.readMorePost": "section for more.",
@@ -89,7 +91,9 @@ export const ui = {
     // Home hero
     "home.greeting": "Hola, soy Tommy",
     "home.bio":
-      "Data Scientist & AI Engineer con base en Bogotá. Trabajo en la intersección de modelos ML, automatización con LLMs y sistemas de datos a escala. Actualmente en Kimberly-Clark (LATAM) y como consultor independiente en 2DATO.",
+      "Data Scientist & AI Engineer con base en Bogotá. Trabajo en la intersección de modelos ML, automatización con LLMs y sistemas de datos a escala. Actualmente en Kimberly-Clark (LATAM) y como consultor independiente en ",
+    "home.bioCompany": "2DATO",
+    "home.bioPost": ".",
     "home.readMorePre":
       "Explora mis notas técnicas y proyectos, o pásate por la sección",
     "home.readMoreLink": "About",

@@ -43,7 +43,14 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
         <span class="sr-only">RSS Feed</span>
       </a>
 
-      <p>{t("home.bio")}</p>
+      <p>
+        {t("home.bio")}<a
+          href="https://2dato.co"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline decoration-dashed underline-offset-4 hover:text-accent"
+        >{t("home.bioCompany")}</a>{t("home.bioPost")}
+      </p>
       <p class="mt-2">
         {t("home.readMorePre")}
         <LinkButton
