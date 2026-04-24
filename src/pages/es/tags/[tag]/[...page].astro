@@ -13,7 +13,7 @@ import { SITE } from "@/config";
 import { useTranslations } from "@/i18n/ui";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-  const posts = await getCollection("blog");
+  const posts = await getCollection("blog", ({ data }) => data.lang === "es");
   const tags = getUniqueTags(posts);
 
   return tags.flatMap(({ tag, tagName }) => {

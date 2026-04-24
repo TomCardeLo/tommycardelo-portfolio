@@ -9,7 +9,7 @@ import getUniqueTags from "@/utils/getUniqueTags";
 import { SITE } from "@/config";
 import { useTranslations } from "@/i18n/ui";
 
-const posts = await getCollection("blog");
+const posts = await getCollection("blog", ({ data }) => data.lang === "es");
 let tags = getUniqueTags(posts);
 const t = useTranslations("es");
 ---

@@ -9,18 +9,17 @@ type Props = {
 };
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog", ({ data }) => !data.draft && data.lang === "en");
-  const postResult = posts.map(post => ({
-    params: { slug: getPath(post.id, post.filePath, false) },
+  const posts = await getCollection("blog", ({ data }) => !data.draft && data.lang === "es");
+  return posts.map(post => ({
+    // Strip the leading /es/ directory from the path so the URL is /es/posts/hello not /es/posts/es/hello
+    params: { slug: getPath(post.id, post.filePath, false).replace(/^\/es\//, "") },
     props: { post },
   }));
-
-  return postResult;
 }
 
 const { post } = Astro.props;
 
-const posts = await getCollection("blog", ({ data }) => data.lang === "en");
+const posts = await getCollection("blog", ({ data }) => data.lang === "es");
 const sortedPosts = getSortedPosts(posts);
 ---
 

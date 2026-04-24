@@ -58,6 +58,9 @@ export const ui = {
     // Pagination
     "pagination.prev": "Prev",
     "pagination.next": "Next",
+    // Post detail
+    "post.prev": "Previous Post",
+    "post.next": "Next Post",
     // Footer
     "footer.rights": "All rights reserved.",
     // Breadcrumb
@@ -113,6 +116,9 @@ export const ui = {
     // Pagination
     "pagination.prev": "Ant.",
     "pagination.next": "Sig.",
+    // Post detail
+    "post.prev": "Artículo anterior",
+    "post.next": "Artículo siguiente",
     // Footer
     "footer.rights": "Todos los derechos reservados.",
     // Breadcrumb

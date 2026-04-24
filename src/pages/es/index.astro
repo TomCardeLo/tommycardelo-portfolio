@@ -15,7 +15,7 @@ import { useTranslations } from "@/i18n/ui";
 
 const t = useTranslations("es");
 
-const posts = await getCollection("blog");
+const posts = await getCollection("blog", ({ data }) => !data.draft && data.lang === "es");
 const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);

@@ -1,19 +1,19 @@
 ---
 author: Tommy CardeLo
 pubDatetime: 2026-04-23T10:00:00Z
-title: Hola, soy Tommy
-slug: hola
+title: Hi, I'm Tommy
 featured: true
 draft: false
 tags:
   - personal
-description: Data Scientist construyendo el camino hacia AI Engineer.
+lang: en
+description: Data Scientist building the path towards AI Engineer.
 ---
 
-Soy data scientist y demand planner trabajando con Kimberly-Clark.
-En paralelo construyo agentes de IA y automatizaciones para clientes.
+I'm a data scientist and demand planner working with Kimberly-Clark.
+In parallel, I build AI agents and automations for clients.
 
-Este sitio es mi laboratorio público: aquí documento lo que aprendo
-sobre ML, LLMs, agentes, y MLOps.
+This site is my public lab: here I document what I learn
+about ML, LLMs, agents, and MLOps.
 
-Además, este será un espacio para mostrar mi trabajo y mis proyectos.
+It will also be a space to showcase my work and projects.

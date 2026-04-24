@@ -14,6 +14,7 @@ import { slugifyStr } from "@/utils/slugify";
 import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
 import IconChevronRight from "@/assets/icons/IconChevronRight.svg";
 import { SITE } from "@/config";
+import { getLangFromUrl, useTranslations } from "@/i18n/ui";
 
 type Props = {
   post: CollectionEntry<"blog">;
@@ -21,6 +22,19 @@ type Props = {
 };
 
 const { post, posts } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+/** Build the correct href for a post depending on the current language. */
+function postHref(id: string, filePath: string | undefined): string {
+  const rawPath = getPath(id, filePath, false); // e.g. "/hello" or "/es/hello"
+  if (lang === "es") {
+    const cleanPath = rawPath.replace(/^\/es/, "");
+    return `/es/posts${cleanPath}`;
+  }
+  return `/posts${rawPath}`;
+}
 
 const {
   title,
@@ -48,7 +62,7 @@ if (typeof initOgImage === "string") {
 
 // Use dynamic OG image if enabled and no remote|local ogImage
 if (!ogImageUrl && SITE.dynamicOgImage) {
-  ogImageUrl = `${getPath(post.id, post.filePath)}/index.png`;
+  ogImageUrl = `${postHref(post.id, post.filePath)}/index.png`;
 }
 
 // Resolve OG image URL (or fallback to SITE.ogImage / default `og.png`)
@@ -133,12 +147,12 @@ const nextPost =
       {
         prevPost && (
           <a
-            href={getPath(prevPost.id, prevPost.filePath)}
+            href={postHref(prevPost.id, prevPost.filePath)}
             class="flex w-full gap-1 hover:opacity-75"
           >
             <IconChevronLeft class="inline-block flex-none rtl:rotate-180" />
             <div>
-              <span>Previous Post</span>
+              <span>{t("post.prev")}</span>
               <div class="text-sm text-accent/85">{prevPost.title}</div>
             </div>
           </a>
@@ -147,11 +161,11 @@ const nextPost =
       {
         nextPost && (
           <a
-            href={getPath(nextPost.id, nextPost.filePath)}
+            href={postHref(nextPost.id, nextPost.filePath)}
             class="flex w-full justify-end gap-1 text-end hover:opacity-75 sm:col-start-2"
           >
             <div>
-              <span>Next Post</span>
+              <span>{t("post.next")}</span>
               <div class="text-sm text-accent/85">{nextPost.title}</div>
             </div>
             <IconChevronRight class="inline-block flex-none rtl:rotate-180" />

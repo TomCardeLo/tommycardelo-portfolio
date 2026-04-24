@@ -14,7 +14,7 @@ if (!SITE.showArchives) {
   return Astro.redirect("/404");
 }
 
-const posts = await getCollection("blog", ({ data }) => !data.draft);
+const posts = await getCollection("blog", ({ data }) => !data.draft && data.lang === "en");
 const t = useTranslations("en");
 
 const months = Array.from({ length: 12 }, (_, i) =>
