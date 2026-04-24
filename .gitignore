@@ -28,3 +28,6 @@ public/pagefind
 
 # AI assistant instructions
 CLAUDE.md
+
+# Personal files
+*.pdf
