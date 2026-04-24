@@ -1,17 +1,20 @@
-# Base stage for building the static files
-FROM node:lts AS base
+# ===== Build stage =====
+FROM node:20-alpine AS build
 WORKDIR /app
 
-# Install pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
+# Copia los manifiestos primero (mejor caché)
+COPY package*.json ./
+RUN npm ci
 
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
-
+# Copia el resto y construye
 COPY . .
-RUN pnpm run build
+RUN npm run build
 
-# Runtime stage for serving the application
-FROM nginx:mainline-alpine-slim AS runtime
-COPY --from=base /app/dist /usr/share/nginx/html
-EXPOSE 80
+# ===== Serve stage =====
+FROM nginx:alpine
+COPY --from=build /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Cloud Run usa el puerto en $PORT, default 8080
+EXPOSE 8080
+CMD ["nginx", "-g", "daemon off;"]
