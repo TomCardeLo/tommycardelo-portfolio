@@ -32,7 +32,7 @@ export const SOCIALS: Social[] = [
   },
   {
     name: "2DATO",
-    href: "https://2dato.co",
+    href: "https://www.2dato.co",
     linkTitle: "2DATO – Tommy's consulting firm",
     icon: IconWorld,
   },
