@@ -36,7 +36,7 @@ jobs:
       - name: Build and Push
         run: |
           IMAGE="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/web:${{ github.sha }}"
-          gcloud builds submit --tag $IMAGE
+          gcloud builds submit --tag $IMAGE --suppress-logs
           echo "IMAGE=$IMAGE" >> $GITHUB_ENV
 
       - name: Deploy to Cloud Run
