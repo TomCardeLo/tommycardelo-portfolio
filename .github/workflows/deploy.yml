@@ -33,10 +33,11 @@ jobs:
       - name: Configure Docker
         run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev
 
-      - name: Build and Push
+      - name: Build and Push (local Docker)
         run: |
           IMAGE="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/web:${{ github.sha }}"
-          gcloud builds submit --tag $IMAGE --suppress-logs
+          docker build -t $IMAGE .
+          docker push $IMAGE
           echo "IMAGE=$IMAGE" >> $GITHUB_ENV
 
       - name: Deploy to Cloud Run
