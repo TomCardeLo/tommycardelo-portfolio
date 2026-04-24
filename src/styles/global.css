@@ -5,20 +5,20 @@
 
 :root,
 html[data-theme="light"] {
-  --background: 250, 250, 250;
-  --foreground: 24, 24, 27;
-  --accent: 0, 100, 200;
-  --muted: 230, 230, 230;
-  --border: 220, 220, 220;
+  --background: #fafafa;
+  --foreground: #18181b;
+  --accent: #0064c8;
+  --muted: #e6e6e6;
+  --border: #dcdcdc;
 }
 
 html[data-theme="dark"] {
-  --background: 10, 10, 12;
-  --foreground: 220, 220, 220;
-  --accent: 0, 230, 180;
+  --background: #0a0a0c;
+  --foreground: #dcdcdc;
+  --accent: #00e6b4;
   /* verde terminal */
-  --muted: 35, 35, 40;
-  --border: 50, 50, 55;
+  --muted: #232328;
+  --border: #323237;
 }
 
 @theme inline {
