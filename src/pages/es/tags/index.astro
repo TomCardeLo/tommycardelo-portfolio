@@ -11,7 +11,7 @@ import { useTranslations } from "@/i18n/ui";
 
 const posts = await getCollection("blog");
 let tags = getUniqueTags(posts);
-const t = useTranslations("en");
+const t = useTranslations("es");
 ---
 
 <Layout title={`${t("tags.title")} | ${SITE.title}`}>

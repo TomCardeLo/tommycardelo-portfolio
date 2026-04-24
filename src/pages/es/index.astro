@@ -13,7 +13,7 @@ import { SITE } from "@/config";
 import { SOCIALS } from "@/constants";
 import { useTranslations } from "@/i18n/ui";
 
-const t = useTranslations("en");
+const t = useTranslations("es");
 
 const posts = await getCollection("blog");
 const sortedPosts = getSortedPosts(posts);
@@ -48,7 +48,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
         {t("home.readMorePre")}
         <LinkButton
           class="underline decoration-dashed underline-offset-4 hover:text-accent"
-          href="/about"
+          href="/es/about"
         >
           {t("home.readMoreLink")}
         </LinkButton>
@@ -104,7 +104,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
     }
 
     <div class="my-8 text-center">
-      <LinkButton href="/posts/">
+      <LinkButton href="/es/posts/">
         {t("home.allPosts")}
         <IconArrowRight class="inline-block rtl:-rotate-180" />
       </LinkButton>
@@ -118,7 +118,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
     const indexLayout = (document.querySelector("#main-content") as HTMLElement)
       ?.dataset?.layout;
     if (indexLayout) {
-      sessionStorage.setItem("backUrl", "/");
+      sessionStorage.setItem("backUrl", "/es/");
     }
   });
 </script>

@@ -6,7 +6,13 @@ import IconArchive from "@/assets/icons/IconArchive.svg";
 import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
 import IconMenuDeep from "@/assets/icons/IconMenuDeep.svg";
 import LinkButton from "./LinkButton.astro";
+import LangSwitch from "./LangSwitch.astro";
 import { SITE } from "@/config";
+import { getLangFromUrl, useTranslations, getLocalePath } from "@/i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const base = (path: string) => getLocalePath(lang, path);
 
 const { pathname } = Astro.url;
 
@@ -14,11 +20,15 @@ const { pathname } = Astro.url;
 const currentPath =
   pathname.endsWith("/") && pathname !== "/" ? pathname.slice(0, -1) : pathname;
 
-const isActive = (path: string) => {
-  const currentPathArray = currentPath.split("/").filter(p => p.trim());
-  const pathArray = path.split("/").filter(p => p.trim());
+// Strip locale prefix for comparison
+const strippedPath = currentPath.replace(/^\/es/, "") || "/";
 
-  return currentPath === path || currentPathArray[0] === pathArray[0];
+const isActive = (path: string) => {
+  const stripped = strippedPath.replace(/\/+$/, "");
+  const target = path.replace(/\/+$/, "");
+  const strippedArr = stripped.split("/").filter(p => p.trim());
+  const targetArr = target.split("/").filter(p => p.trim());
+  return stripped === target || strippedArr[0] === targetArr[0];
 };
 ---
 
@@ -43,7 +53,7 @@ const isActive = (path: string) => {
     ]}
   >
     <a
-      href="/"
+      href={base("/")}
       class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"
     >
       {SITE.title}
@@ -72,52 +82,52 @@ const isActive = (path: string) => {
         ]}
       >
         <li class="col-span-2">
-          <a href="/posts" class:list={{ "active-nav": isActive("/posts") }}>
-            Posts
+          <a href={base("/posts")} class:list={{ "active-nav": isActive("/posts") }}>
+            {t("nav.posts")}
           </a>
         </li>
         <li class="col-span-2">
-          <a href="/tags" class:list={{ "active-nav": isActive("/tags") }}>
-            Tags
+          <a href={base("/tags")} class:list={{ "active-nav": isActive("/tags") }}>
+            {t("nav.tags")}
           </a>
         </li>
         <li class="col-span-2">
-          <a href="/about" class:list={{ "active-nav": isActive("/about") }}>
-            About
+          <a href={base("/about")} class:list={{ "active-nav": isActive("/about") }}>
+            {t("nav.about")}
           </a>
         </li>
         {
           SITE.showArchives && (
             <li class="col-span-2">
               <LinkButton
-                href="/archives"
+                href={base("/archives")}
                 class:list={[
                   "focus-outline flex justify-center p-3 sm:p-1",
                   {
                     "active-nav [&>svg]:stroke-accent": isActive("/archives"),
                   },
                 ]}
-                title="Archives"
+                title={t("nav.archives")}
                 aria-label="archives"
               >
                 <IconArchive class="hidden sm:inline-block" />
-                <span class="sm:sr-only">Archives</span>
+                <span class="sm:sr-only">{t("nav.archives")}</span>
               </LinkButton>
             </li>
           )
         }
         <li class="col-span-1 flex items-center justify-center">
           <LinkButton
-            href="/search"
+            href={base("/search")}
             class:list={[
               "focus-outline flex p-3 sm:p-1",
               { "[&>svg]:stroke-accent": isActive("/search") },
             ]}
-            title="Search"
+            title={t("nav.search")}
             aria-label="search"
           >
             <IconSearch />
-            <span class="sr-only">Search</span>
+            <span class="sr-only">{t("nav.search")}</span>
           </LinkButton>
         </li>
         {
@@ -136,6 +146,9 @@ const isActive = (path: string) => {
             </li>
           )
         }
+        <li class="col-span-2 flex items-center justify-center sm:col-span-1">
+          <LangSwitch />
+        </li>
       </ul>
     </nav>
   </div>

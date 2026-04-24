@@ -1,0 +1,38 @@
+---
+import { getLangFromUrl, getLocalePath } from "@/i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const { pathname } = Astro.url;
+
+// Strip /es prefix to get the base path, then build the target URL
+const basePath = pathname.replace(/^\/es/, "") || "/";
+
+// On individual post pages (/posts/slug/) there is no ES equivalent:
+// redirect to the target-language posts listing instead.
+const isPostDetail = /^\/posts\/[^/]+\/?$/.test(basePath);
+
+const enHref = isPostDetail ? "/posts/" : basePath;
+const esHref = isPostDetail ? "/es/posts/" : getLocalePath("es", basePath);
+---
+
+<div class="flex items-center gap-1 text-sm font-semibold">
+  {
+    lang === "en" ? (
+      <>
+        <span aria-current="true">EN</span>
+        <span class="opacity-30">/</span>
+        <a href={esHref} class="opacity-50 hover:opacity-100 hover:text-accent transition-opacity">
+          ES
+        </a>
+      </>
+    ) : (
+      <>
+        <a href={enHref} class="opacity-50 hover:opacity-100 hover:text-accent transition-opacity">
+          EN
+        </a>
+        <span class="opacity-30">/</span>
+        <span aria-current="true">ES</span>
+      </>
+    )
+  }
+</div>

@@ -15,6 +15,13 @@ import { SITE } from "./src/config";
 export default defineConfig({
   site: "https://tommycardelo.com",
   output: "static",
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "es"],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   integrations: [
     sitemap({
       filter: page => SITE.showArchives || !page.endsWith("/archives"),

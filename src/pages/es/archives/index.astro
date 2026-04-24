@@ -9,13 +9,12 @@ import getPostsByGroupCondition from "@/utils/getPostsByGroupCondition";
 import { SITE } from "@/config";
 import { useTranslations } from "@/i18n/ui";
 
-// Redirect to 404 page if `showArchives` config is false
 if (!SITE.showArchives) {
   return Astro.redirect("/404");
 }
 
 const posts = await getCollection("blog", ({ data }) => !data.draft);
-const t = useTranslations("en");
+const t = useTranslations("es");
 
 const months = Array.from({ length: 12 }, (_, i) =>
   t(`months.${i + 1}` as Parameters<typeof t>[0])

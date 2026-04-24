@@ -18,6 +18,6 @@ export const SITE = {
   },
   dynamicOgImage: true,
   dir: "ltr",
-  lang: "es",          // o "en" si lo prefieres en inglés
+  lang: "en",
   timezone: "America/Bogota",
 };

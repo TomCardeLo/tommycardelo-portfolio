@@ -17,7 +17,7 @@ export const getStaticPaths = (async ({ paginate }) => {
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
-const t = useTranslations("en");
+const t = useTranslations("es");
 ---
 
 <Layout title={`${t("posts.title")} | ${SITE.title}`}>
