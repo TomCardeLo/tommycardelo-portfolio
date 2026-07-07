@@ -47,6 +47,8 @@ profile = {
 
 ## Proyectos destacados
 
+- [Velora](https://velora.tommycardelo.com): suite de calculadoras de supply chain con una capa de IA que protege la privacidad ([post](/es/posts/velora))
+- [`deepy-voice-assistant`](https://github.com/TomCardeLo/deepy-voice-assistant): asistente de voz local para Windows conectado a la CLI de Claude Code ([post](/es/posts/deepy-voice-assistant))
 - [`boa-sarima-forecaster`](https://github.com/TomCardeLo/boa-sarima-forecaster): forecasting tool con optimización bayesiana
 - Pipeline de procesamiento de contratos con LLMs (en producción)
 - Bot de WhatsApp para tracking de hábitos con generación de reportes
