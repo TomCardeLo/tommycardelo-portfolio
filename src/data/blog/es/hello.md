@@ -10,8 +10,8 @@ lang: es
 description: Data Scientist construyendo el camino hacia AI Engineer.
 ---
 
-Soy data scientist y demand planner trabajando con Kimberly-Clark.
-En paralelo construyo agentes de IA y automatizaciones para clientes.
+Soy data scientist en Arbex.
+Además, construyo agentes de IA y automatizaciones de la mano de [2DATO](https://www.2dato.co), un proyecto que llevo junto a dos amigos.
 
 Este sitio es mi laboratorio público: aquí documento lo que aprendo
 sobre ML, LLMs, agentes, y MLOps.

@@ -8,7 +8,7 @@ title: "About"
 ```python
 profile = {
     "name": "Tomás Cárdenas López",
-    "current_role": "LATAM Data Scientist & Demand Planner @ Kimberly-Clark",
+    "current_role": "LATAM Data Scientist & Demand Planner @ Arbex (formerly Kimberly-Clark)",
     "freelance": "Data Scientist & AI Consultant @ 2DATO",
     "next_step": "AI Engineer",
     "stack": ["Python", "SQL", "Databricks", "AWS", "Power BI", "Tableau"],
@@ -23,7 +23,7 @@ profile = {
 - **Freelance Data Scientist & AI Consultant · 2DATO** *(Jul 2023 – present)*  
   End-to-end solution architecture with Databricks · Complex ETL pipelines · ML models (Isolation Forest) · Prescriptive analytics with LLMs · BI with Power BI
 
-- **LATAM Data Scientist & Demand Planner · Kimberly-Clark** *(Jun 2023 – present)*  
+- **LATAM Data Scientist & Demand Planner · Arbex** *(Jun 2023 – present, formerly Kimberly-Clark, renamed after a joint venture with Suzano)*  
   Sales forecasting for Latin America · Statistical models with SARIMA and Bayesian Optimization · Project Horizon
 
 - **Analytics & Operations Coordinator · Dispapeles** *(2017 – 2023)*  
