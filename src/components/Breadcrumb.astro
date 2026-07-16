@@ -31,29 +31,31 @@ if (segments[0] === "tags" && !isNaN(Number(segments[2]))) {
 
 <nav class="app-layout mt-8 mb-1" aria-label="breadcrumb">
   <ul
-    class="font-light [&>li]:inline [&>li:not(:last-child)>a]:hover:opacity-100"
+    class="t-label [&>li]:inline [&>li:not(:last-child)>a]:hover:opacity-100"
   >
     <li>
-      <a href={homeHref} class="opacity-80">{t("breadcrumb.home")}</a>
-      <span aria-hidden="true" class="opacity-80">&raquo;</span>
+      <a href={homeHref} class="opacity-80 hover:text-accent"
+        >{t("breadcrumb.home")}</a
+      >
+      <span aria-hidden="true" class="opacity-80">/</span>
     </li>
     {
       segments.map((breadcrumb, index) =>
         index + 1 === segments.length ? (
           <li>
-            <span
-              class:list={["capitalize opacity-75", { lowercase: index > 0 }]}
-              aria-current="page"
-            >
+            <span class="text-accent" aria-current="page">
               {decodeURIComponent(breadcrumb)}
             </span>
           </li>
         ) : (
           <li>
-            <a href={`${homeHref}${breadcrumb}/`} class="capitalize opacity-70">
+            <a
+              href={`${homeHref}${breadcrumb}/`}
+              class="opacity-70 hover:text-accent"
+            >
               {breadcrumb}
             </a>
-            <span aria-hidden="true">&raquo;</span>
+            <span aria-hidden="true">/</span>
           </li>
         )
       )

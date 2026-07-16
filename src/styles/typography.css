@@ -13,8 +13,12 @@
       @apply mb-3 text-foreground;
     }
 
+    h2 {
+      @apply uppercase tracking-tight border-b border-border pb-2;
+    }
+
     h3 {
-      @apply italic;
+      @apply uppercase;
     }
 
     p,
@@ -48,7 +52,7 @@
     }
 
     figcaption {
-      @apply opacity-75;
+      @apply text-xs font-medium uppercase tracking-widest opacity-75;
     }
 
     table {
@@ -58,7 +62,7 @@
       }
 
       th {
-        @apply py-1.5;
+        @apply py-1.5 text-xs font-medium uppercase tracking-wider text-start;
       }
 
       code {
@@ -67,7 +71,7 @@
     }
 
     code {
-      @apply rounded bg-muted/75 p-1 wrap-break-word text-foreground before:content-none after:content-none;
+      @apply bg-muted/75 p-1 wrap-break-word text-foreground before:content-none after:content-none;
     }
 
     .astro-code code {
@@ -75,7 +79,7 @@
     }
 
     blockquote {
-      @apply border-s-accent/80 wrap-break-word opacity-80;
+      @apply border-s-2 border-s-accent wrap-break-word opacity-80;
     }
 
     details {
@@ -113,7 +117,7 @@
       @apply inline-block w-full bg-slate-400/20;
     }
     .highlighted-word {
-      @apply rounded-sm border border-border px-0.5 py-px;
+      @apply border border-border px-0.5 py-px;
     }
   }
 }

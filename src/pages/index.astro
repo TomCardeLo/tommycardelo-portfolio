@@ -25,7 +25,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
   <Header />
   <main id="main-content" data-layout="index" class="app-layout">
     <section id="hero" class:list={["pt-8 pb-6", "border-b border-border"]}>
-      <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
+      <h1 class="my-4 inline-block text-4xl font-bold uppercase tracking-tight leading-none sm:my-8 sm:text-5xl">
         {t("home.greeting")}
       </h1>
       <a
@@ -42,6 +42,8 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
         />
         <span class="sr-only">RSS Feed</span>
       </a>
+
+      <p class="t-label text-accent"><span aria-hidden="true">&gt;&gt;&gt; </span>{SITE.desc}</p>
 
       <p>
         {t("home.bio")}<a
@@ -82,8 +84,8 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
             { "border-b border-border": recentPosts.length > 0 },
           ]}
         >
-          <h2 class="text-2xl font-semibold tracking-wide">
-            {t("home.featured")}
+          <h2 class="text-xl font-bold uppercase tracking-tight sm:text-2xl">
+            <span aria-hidden="true">[ </span>{t("home.featured")}<span aria-hidden="true"> ]</span>
           </h2>
           <ul>
             {featuredPosts.map(data => (
@@ -97,8 +99,8 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
     {
       recentPosts.length > 0 && (
         <section id="recent-posts" class="pt-12 pb-6">
-          <h2 class="text-2xl font-semibold tracking-wide">
-            {t("home.recentPosts")}
+          <h2 class="text-xl font-bold uppercase tracking-tight sm:text-2xl">
+            <span aria-hidden="true">[ </span>{t("home.recentPosts")}<span aria-hidden="true"> ]</span>
           </h2>
           <ul>
             {recentPosts.map(
@@ -111,7 +113,10 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
     }
 
     <div class="my-8 text-center">
-      <LinkButton href="/posts/">
+      <LinkButton
+        href="/posts/"
+        class="t-label border-2 border-border px-4 py-2 hover:bg-foreground hover:text-background"
+      >
         {t("home.allPosts")}
         <IconArrowRight class="inline-block rtl:-rotate-180" />
       </LinkButton>

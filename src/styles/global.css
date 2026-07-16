@@ -5,20 +5,20 @@
 
 :root,
 html[data-theme="light"] {
-  --background: #fafafa;
-  --foreground: #18181b;
+  --background: #f2f2ed;
+  --foreground: #111111;
   --accent: #0064c8;
-  --muted: #e6e6e6;
-  --border: #dcdcdc;
+  --muted: #e6e2d9;
+  --border: #111111;
 }
 
 html[data-theme="dark"] {
   --background: #0a0a0c;
-  --foreground: #dcdcdc;
+  --foreground: #e8e8e8;
   --accent: #00e6b4;
   /* verde terminal */
   --muted: #232328;
-  --border: #323237;
+  --border: #3f3f46;
 }
 
 @theme inline {
@@ -33,6 +33,7 @@ html[data-theme="dark"] {
 @layer base {
   * {
     @apply border-border outline-accent/75;
+    border-radius: 0;
     scrollbar-width: auto;
     scrollbar-color: var(--color-muted) transparent;
   }
@@ -54,6 +55,20 @@ html[data-theme="dark"] {
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
+
+  /* CRT scanlines — solo en modo oscuro */
+  html[data-theme="dark"] body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent 0 2px,
+      rgba(0, 0, 0, 0.07) 2px 3px
+    );
+  }
 }
 
 @utility max-w-app {
@@ -64,8 +79,35 @@ html[data-theme="dark"] {
   @apply mx-auto w-full max-w-app px-4;
 }
 
+/* Micro-tipografía: etiquetas, fechas, nav, tags, botones */
+@utility t-label {
+  @apply text-xs font-medium uppercase tracking-widest;
+}
+
 .active-nav {
-  @apply underline decoration-wavy decoration-2 underline-offset-8;
+  @apply bg-accent text-background no-underline;
+}
+
+/* Readout numerado para listas de posts */
+ul:has(> .post-row) {
+  counter-reset: post;
+  @apply mt-4;
+}
+
+.post-row {
+  counter-increment: post;
+  @apply grid grid-cols-[3.25rem_1fr] border-t border-border py-4;
+}
+
+.post-row > * {
+  grid-column: 2;
+}
+
+.post-row::before {
+  content: "[" counter(post, decimal-leading-zero) "]";
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  @apply pt-1 text-sm text-accent;
 }
 
 /* Source: https://piccalil.li/blog/a-more-modern-css-reset/ */

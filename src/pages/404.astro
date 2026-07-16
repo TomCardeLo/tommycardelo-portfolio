@@ -14,12 +14,14 @@ import { SITE } from "@/config";
     class="app-layout flex flex-1 items-center justify-center"
   >
     <div class="mb-14 flex flex-col items-center justify-center">
-      <h1 class="text-9xl font-bold text-accent">404</h1>
+      <h1 class="text-9xl font-bold tracking-tighter text-accent">404</h1>
       <span aria-hidden="true">¯\_(ツ)_/¯</span>
-      <p class="mt-4 text-2xl sm:text-3xl">Page Not Found</p>
+      <p class="mt-4 text-2xl font-bold uppercase tracking-tight sm:text-3xl">
+        Page Not Found
+      </p>
       <LinkButton
         href="/"
-        class="my-6 text-lg underline decoration-dashed underline-offset-8"
+        class="t-label my-6 border-2 border-border px-4 py-2 hover:bg-foreground hover:text-background"
       >
         Go back home
       </LinkButton>

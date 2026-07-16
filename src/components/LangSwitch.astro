@@ -12,23 +12,27 @@ const enHref = basePath;
 const esHref = getLocalePath("es", basePath);
 ---
 
-<div class="flex items-center gap-1 text-sm font-semibold">
+<div class="flex items-center gap-1 t-label">
   {
     lang === "en" ? (
       <>
-        <span aria-current="true">EN</span>
+        <span aria-current="true">
+          <span aria-hidden="true">[</span>EN<span aria-hidden="true">]</span>
+        </span>
         <span class="opacity-30">/</span>
-        <a href={esHref} class="opacity-50 hover:opacity-100 hover:text-accent transition-opacity">
+        <a href={esHref} class="opacity-50 hover:opacity-100 hover:text-accent">
           ES
         </a>
       </>
     ) : (
       <>
-        <a href={enHref} class="opacity-50 hover:opacity-100 hover:text-accent transition-opacity">
+        <a href={enHref} class="opacity-50 hover:opacity-100 hover:text-accent">
           EN
         </a>
         <span class="opacity-30">/</span>
-        <span aria-current="true">ES</span>
+        <span aria-current="true">
+          <span aria-hidden="true">[</span>ES<span aria-hidden="true">]</span>
+        </span>
       </>
     )
   }
