@@ -31,8 +31,7 @@ export default defineConfig({
     remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]],
     shikiConfig: {
       // For more themes, visit https://shiki.style/themes
-      themes: { light: "min-light", dark: "night-owl" },
-      defaultColor: false,
+      theme: "vesper",
       wrap: false,
       transformers: [
         transformerFileName({ style: "v2", hideDot: false }),
@@ -75,6 +74,15 @@ export default defineConfig({
         fallbacks: ["monospace"],
         weights: [300, 400, 500, 600, 700],
         styles: ["normal", "italic"],
+      },
+      {
+        name: "Archivo Black",
+        cssVariable: "--font-archivo-black",
+        provider: fontProviders.google(),
+        fallbacks: ["Impact", "sans-serif"],
+        weights: [400],
+        styles: ["normal"],
+        subsets: ["latin", "latin-ext"],
       },
     ],
   },

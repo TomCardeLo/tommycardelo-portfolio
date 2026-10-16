@@ -8,7 +8,7 @@ const URL = Astro.url;
 {
   SHARE_LINKS.length > 0 && (
     <div class="flex flex-none flex-col items-center justify-center gap-1 md:items-start">
-      <span class="t-label opacity-80">Share this post on:</span>
+      <span class="t-label text-muted-fg">Share this post on:</span>
       <div class="text-center">
         {SHARE_LINKS.map(social => (
           <LinkButton

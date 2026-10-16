@@ -106,7 +106,7 @@ const nextPost =
   >
     <h1
       transition:name={slugifyStr(title.replaceAll(".", "-"))}
-      class="inline-block text-2xl font-bold uppercase tracking-tight leading-tight text-accent sm:text-3xl"
+      class="t-display block text-[clamp(2rem,6vw,5rem)] text-foreground"
     >
       {title}
     </h1>
@@ -123,7 +123,7 @@ const nextPost =
     </div>
     <article
       id="article"
-      class="app-prose mt-8 w-full max-w-app prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)"
+      class="app-prose mt-8 w-full max-w-3xl"
     >
       <Content />
     </article>
@@ -152,7 +152,7 @@ const nextPost =
           >
             <IconChevronLeft class="inline-block flex-none rtl:rotate-180" />
             <div>
-              <span class="t-label opacity-80">{t("post.prev")}</span>
+              <span class="t-label text-muted-fg">{t("post.prev")}</span>
               <div class="mt-1 text-sm text-accent">{prevPost.title}</div>
             </div>
           </a>
@@ -165,7 +165,7 @@ const nextPost =
             class="flex w-full justify-end gap-1 border-2 border-border p-4 text-end hover:border-accent hover:text-accent sm:col-start-2"
           >
             <div>
-              <span class="t-label opacity-80">{t("post.next")}</span>
+              <span class="t-label text-muted-fg">{t("post.next")}</span>
               <div class="mt-1 text-sm text-accent">{nextPost.title}</div>
             </div>
             <IconChevronRight class="inline-block flex-none rtl:rotate-180" />
@@ -262,7 +262,7 @@ const nextPost =
         : "-top-3";
 
       const copyButton = document.createElement("button");
-      copyButton.className = `copy-code absolute end-3 ${topClass} bg-background border border-border px-2 py-1 text-xs uppercase tracking-wider leading-4 text-foreground font-medium`;
+      copyButton.className = `copy-code absolute end-3 ${topClass} bg-background border border-border px-2 py-1 text-xs uppercase tracking-widest leading-4 text-foreground font-medium`;
       copyButton.innerHTML = copyButtonLabel;
       codeBlock.setAttribute("tabindex", "0");
       codeBlock.appendChild(copyButton);

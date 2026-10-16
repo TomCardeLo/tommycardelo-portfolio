@@ -1,0 +1,179 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Socials from "@/components/Socials.astro";
+import LinkButton from "@/components/LinkButton.astro";
+import Card from "@/components/Card.astro";
+import getSortedPosts from "@/utils/getSortedPosts";
+import IconRss from "@/assets/icons/IconRss.svg";
+import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
+import { SITE } from "@/config";
+import { SOCIALS } from "@/constants";
+import { useTranslations, getLocalePath } from "@/i18n/ui";
+
+type Props = { lang: "en" | "es" };
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const base = (p: string) => getLocalePath(lang, p);
+const backUrl = lang === "es" ? "/es/" : "/";
+
+const posts = await getCollection(
+  "blog",
+  ({ data }) => !data.draft && data.lang === lang
+);
+const sortedPosts = getSortedPosts(posts);
+const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
+const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+
+const now = new Date();
+const currentYear = now.getFullYear();
+const month = String(now.getMonth() + 1).padStart(2, "0");
+const pad = (n: number) => String(n).padStart(2, "0");
+---
+
+<Layout>
+  <Header />
+  <main id="main-content" data-layout="index" data-back={backUrl} class="app-layout">
+    <section id="hero" class="mt-8 grid-hairline">
+      <!-- barra de telemetría -->
+      <div
+        class="t-label flex flex-wrap items-center justify-between gap-x-6 gap-y-1 px-4 py-2"
+      >
+        <span><span aria-hidden="true">[</span> UNIT / TC-01 <span aria-hidden="true">]</span></span>
+        <span class="max-sm:hidden">BOG · UTC−05 · REV {currentYear}.{month}</span>
+        <span class="text-signal"><span aria-hidden="true">● </span>{t("home.status")}</span>
+      </div>
+      <h1 class="t-display px-4 pt-10 pb-6 text-[clamp(3rem,12vw,10rem)]">
+        {t("home.greeting")}
+      </h1>
+      <div class="grid gap-px bg-border md:grid-cols-[1fr_20rem] [&>*]:bg-background">
+        <div class="px-4 py-6">
+          <p class="t-label mb-4 text-accent">
+            <span aria-hidden="true">&gt;&gt;&gt; </span>{t("home.tagline")}
+          </p>
+          <p>
+            {t("home.bio")}<a
+              href="https://www.2dato.co"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="underline decoration-dashed underline-offset-4 hover:text-accent"
+              >{t("home.bioCompany")}</a
+            >{t("home.bioPost")}
+          </p>
+          <p class="mt-2">
+            {t("home.readMorePre")}
+            <LinkButton
+              class="underline decoration-dashed underline-offset-4 hover:text-accent"
+              href={base("/about")}
+            >
+              {t("home.readMoreLink")}
+            </LinkButton>
+            {t("home.readMorePost")}
+          </p>
+          {
+            SOCIALS.length > 0 && (
+              <div class="mt-4 flex max-sm:flex-col sm:items-center">
+                <div class="me-2 mb-1 whitespace-nowrap sm:mb-0">
+                  {t("home.socialLinks")}
+                </div>
+                <Socials />
+                <a
+                  target="_blank"
+                  href="/rss.xml"
+                  class="ms-2 inline-block"
+                  aria-label="rss feed"
+                  title="RSS Feed"
+                >
+                  <IconRss
+                    width={20}
+                    height={20}
+                    class="scale-125 stroke-accent stroke-3 rtl:-rotate-90"
+                  />
+                  <span class="sr-only">RSS Feed</span>
+                </a>
+              </div>
+            )
+          }
+        </div>
+        <dl
+          class="t-label grid grid-cols-[auto_1fr] content-start gap-x-4 gap-y-3 px-4 py-6"
+        >
+          <dt class="text-muted-fg">{t("home.roleLabel")}</dt>
+          <dd>{t("home.role")}</dd>
+          <dt class="text-muted-fg">{t("home.focusLabel")}</dt>
+          <dd>{t("home.focus")}</dd>
+          <dt class="text-muted-fg">{t("home.locLabel")}</dt>
+          <dd>BOGOTÁ, CO</dd>
+          <dt class="text-muted-fg">{t("home.logLabel")}</dt>
+          <dd>
+            <data value={posts.length}>{String(posts.length).padStart(3, "0")}</data> {t("home.entries")}
+          </dd>
+        </dl>
+      </div>
+    </section>
+
+    {
+      featuredPosts.length > 0 && (
+        <section id="featured" class="pt-16">
+          <div class="flex items-end justify-between gap-4 border-b-2 border-foreground pb-3">
+            <h2 class="t-display text-[clamp(2rem,6vw,4.5rem)]">
+              {t("home.featured")}
+            </h2>
+            <span class="t-label text-muted-fg">
+              <span aria-hidden="true">[</span> {pad(featuredPosts.length)} <span aria-hidden="true">]</span>
+            </span>
+          </div>
+          <ul>
+            {featuredPosts.map(data => (
+              <Card variant="h3" {...data} />
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      recentPosts.length > 0 && (
+        <section id="recent-posts" class="pt-16">
+          <div class="flex items-end justify-between gap-4 border-b-2 border-foreground pb-3">
+            <h2 class="t-display text-[clamp(2rem,6vw,4.5rem)]">
+              {t("home.recentPosts")}
+            </h2>
+            <span class="t-label text-muted-fg">
+              <span aria-hidden="true">[</span> {pad(Math.min(recentPosts.length, SITE.postPerIndex))} <span aria-hidden="true">]</span>
+            </span>
+          </div>
+          <ul>
+            {recentPosts.map(
+              (data, index) =>
+                index < SITE.postPerIndex && <Card variant="h3" {...data} />
+            )}
+          </ul>
+        </section>
+      )
+    }
+
+    <div class="my-12 text-center">
+      <LinkButton
+        href={base("/posts/")}
+        class="t-label inline-flex items-center gap-2 border-2 border-foreground px-5 py-3 hover:border-accent hover:bg-accent hover:text-background"
+      >
+        {t("home.allPosts")}
+        <IconArrowRight class="inline-block rtl:-rotate-180" />
+      </LinkButton>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const main = document.querySelector("#main-content") as HTMLElement | null;
+    if (main?.dataset?.layout && main.dataset.back) {
+      sessionStorage.setItem("backUrl", main.dataset.back);
+    }
+  });
+</script>

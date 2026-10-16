@@ -34,17 +34,17 @@ const datetime = dayjs(isModified ? modDatetime : pubDatetime).tz(
 const date = datetime.format("YYYY-MM-DD"); // e.g., '2025-03-22'
 ---
 
-<div class:list={["flex items-center gap-x-2 opacity-80", className]}>
+<div class:list={["flex items-center gap-x-2 text-muted-fg", className]}>
   <IconCalendar class="inline-block size-4 min-w-4" />
   {
     isModified && (
-      <span class:list={["text-xs tracking-wider", { "sm:text-sm": size === "lg" }]}>
+      <span class:list={["text-xs tracking-widest", { "sm:text-sm": size === "lg" }]}>
         Updated:
       </span>
     )
   }
   <time
-    class:list={["text-xs tracking-wider", { "sm:text-sm": size === "lg" }]}
+    class:list={["text-xs tracking-widest", { "sm:text-sm": size === "lg" }]}
     datetime={datetime.toISOString()}>{date}</time
   >
 </div>

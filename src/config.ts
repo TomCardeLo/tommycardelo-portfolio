@@ -5,7 +5,6 @@ export const SITE = {
   desc: "Data Scientist & AI Engineer | Automation & ML systems",
   title: "Tommy CardeLo",
   ogImage: "og-image.jpg",
-  lightAndDarkMode: true,
   postPerIndex: 4,
   postPerPage: 6,
   scheduledPostMargin: 15 * 60 * 1000,

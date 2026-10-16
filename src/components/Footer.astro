@@ -21,13 +21,13 @@ const { noMarginTop = false, class: className, ...attrs } = Astro.props;
   <div
     class:list={[
       "py-6 sm:py-4",
-      "border-t-2 border-border",
+      "border-t-2 border-foreground",
       "flex flex-col items-center justify-between sm:flex-row-reverse",
     ]}
   >
     <Socials />
     <div
-      class="t-label my-2 flex flex-col items-center whitespace-nowrap opacity-80 sm:flex-row"
+      class="t-label my-2 flex flex-col items-center whitespace-nowrap text-muted-fg sm:flex-row"
     >
       <span
         >Copyright <span class="text-base font-bold" aria-hidden="true"

@@ -89,7 +89,7 @@ const t = useTranslations("es");
     --pagefind-ui-font: var(--font-app);
     --pagefind-ui-text: var(--foreground);
     --pagefind-ui-background: var(--background);
-    --pagefind-ui-border: var(--border);
+    --pagefind-ui-border: var(--muted-fg);
     --pagefind-ui-primary: var(--accent);
     --pagefind-ui-tag: var(--background);
     --pagefind-ui-border-radius: 0;
@@ -103,7 +103,7 @@ const t = useTranslations("es");
 
     input {
       font-weight: 400;
-      border: 2px solid var(--border);
+      border: 2px solid var(--muted-fg);
     }
 
     input:focus-visible {
@@ -111,7 +111,7 @@ const t = useTranslations("es");
     }
 
     .pagefind-ui__result-title a {
-      color: var(--accent);
+      color: var(--foreground);
       outline-offset: 1px;
       outline-color: var(--accent);
       text-decoration-style: dashed;
@@ -123,6 +123,15 @@ const t = useTranslations("es");
       text-decoration-line: none;
       outline-width: 2px;
       outline-style: dashed;
+    }
+
+    .pagefind-ui__result-title a:hover {
+      color: var(--accent);
+    }
+
+    mark {
+      background-color: var(--accent);
+      color: var(--background);
     }
 
     .pagefind-ui__result:last-of-type {

@@ -19,17 +19,17 @@ const esHref = getLocalePath("es", basePath);
         <span aria-current="true">
           <span aria-hidden="true">[</span>EN<span aria-hidden="true">]</span>
         </span>
-        <span class="opacity-30">/</span>
-        <a href={esHref} class="opacity-50 hover:opacity-100 hover:text-accent">
+        <span class="text-muted-fg">/</span>
+        <a href={esHref} class="text-muted-fg hover:text-accent">
           ES
         </a>
       </>
     ) : (
       <>
-        <a href={enHref} class="opacity-50 hover:opacity-100 hover:text-accent">
+        <a href={enHref} class="text-muted-fg hover:text-accent">
           EN
         </a>
-        <span class="opacity-30">/</span>
+        <span class="text-muted-fg">/</span>
         <span aria-current="true">
           <span aria-hidden="true">[</span>ES<span aria-hidden="true">]</span>
         </span>
