@@ -1,220 +1,129 @@
 import satori from "satori";
-// import { html } from "satori-html";
 import { SITE } from "@/config";
 import loadGoogleFonts from "../loadGoogleFont";
 
-// const markup = html`<div
-//       style={{
-//         background: "#fefbfb",
-//         width: "100%",
-//         height: "100%",
-//         display: "flex",
-//         alignItems: "center",
-//         justifyContent: "center",
-//       }}
-//     >
-//       <div
-//         style={{
-//           position: "absolute",
-//           top: "-1px",
-//           right: "-1px",
-//           border: "4px solid #000",
-//           background: "#ecebeb",
-//           opacity: "0.9",
-//           borderRadius: "4px",
-//           display: "flex",
-//           justifyContent: "center",
-//           margin: "2.5rem",
-//           width: "88%",
-//           height: "80%",
-//         }}
-//       />
+const MONO = "IBM Plex Mono";
+const DISPLAY = "Archivo Black";
 
-//       <div
-//         style={{
-//           border: "4px solid #000",
-//           background: "#fefbfb",
-//           borderRadius: "4px",
-//           display: "flex",
-//           justifyContent: "center",
-//           margin: "2rem",
-//           width: "88%",
-//           height: "80%",
-//         }}
-//       >
-//         <div
-//           style={{
-//             display: "flex",
-//             flexDirection: "column",
-//             justifyContent: "space-between",
-//             margin: "20px",
-//             width: "90%",
-//             height: "90%",
-//           }}
-//         >
-//           <p
-//             style={{
-//               fontSize: 72,
-//               fontWeight: "bold",
-//               maxHeight: "84%",
-//               overflow: "hidden",
-//             }}
-//           >
-//             {post.data.title}
-//           </p>
-//           <div
-//             style={{
-//               display: "flex",
-//               justifyContent: "space-between",
-//               width: "100%",
-//               marginBottom: "8px",
-//               fontSize: 28,
-//             }}
-//           >
-//             <span>
-//               by{" "}
-//               <span
-//                 style={{
-//                   color: "transparent",
-//                 }}
-//               >
-//                 "
-//               </span>
-//               <span style={{ overflow: "hidden", fontWeight: "bold" }}>
-//                 {post.data.author}
-//               </span>
-//             </span>
+const label = text => ({
+  type: "div",
+  props: {
+    style: {
+      fontFamily: MONO,
+      fontSize: 22,
+      textTransform: "uppercase",
+      letterSpacing: "0.1em",
+      color: "#eaeaea",
+    },
+    children: text,
+  },
+});
 
-//             <span style={{ overflow: "hidden", fontWeight: "bold" }}>
-//               {SITE.title}
-//             </span>
-//           </div>
-//         </div>
-//       </div>
-//     </div>`;
+const row = (left, right, border) => ({
+  type: "div",
+  props: {
+    style: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      padding: "18px 32px",
+      ...border,
+    },
+    children: [left, right],
+  },
+});
+
+// Tamaño del título según su longitud, para que no se recorte de forma brusca
+const titleSize = len =>
+  len <= 28 ? 88 : len <= 50 ? 72 : len <= 80 ? 58 : 46;
 
 export default async post => {
+  const title = post.data.title;
+  const date = new Date(post.data.pubDatetime).toISOString().slice(0, 10);
+  const topLeft = "[ TOMMYCARDELO.COM ]";
+  const topRight = "[ LOG / POST ]";
+  const by = "BY " + SITE.author;
+
   return satori(
     {
       type: "div",
       props: {
         style: {
-          background: "#fefbfb",
           width: "100%",
           height: "100%",
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          background: "#0a0a0a",
+          padding: 40,
         },
-        children: [
-          {
-            type: "div",
-            props: {
-              style: {
-                position: "absolute",
-                top: "-1px",
-                right: "-1px",
-                border: "4px solid #000",
-                background: "#ecebeb",
-                opacity: "0.9",
-                borderRadius: "4px",
-                display: "flex",
-                justifyContent: "center",
-                margin: "2.5rem",
-                width: "88%",
-                height: "80%",
-              },
+        children: {
+          type: "div",
+          props: {
+            style: {
+              display: "flex",
+              flexDirection: "column",
+              width: "100%",
+              height: "100%",
+              border: "2px solid #eaeaea",
             },
-          },
-          {
-            type: "div",
-            props: {
-              style: {
-                border: "4px solid #000",
-                background: "#fefbfb",
-                borderRadius: "4px",
-                display: "flex",
-                justifyContent: "center",
-                margin: "2rem",
-                width: "88%",
-                height: "80%",
-              },
-              children: {
+            children: [
+              row(label(topLeft), label(topRight), {
+                borderBottom: "1px solid #333",
+              }),
+              {
                 type: "div",
                 props: {
                   style: {
                     display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    margin: "20px",
-                    width: "90%",
-                    height: "90%",
+                    alignItems: "center",
+                    flex: 1,
+                    padding: "0 32px",
+                    overflow: "hidden",
                   },
-                  children: [
-                    {
-                      type: "p",
-                      props: {
-                        style: {
-                          fontSize: 72,
-                          fontWeight: "bold",
-                          maxHeight: "84%",
-                          overflow: "hidden",
-                        },
-                        children: post.data.title,
+                  children: {
+                    type: "div",
+                    props: {
+                      style: {
+                        fontFamily: DISPLAY,
+                        fontSize: titleSize(title.length),
+                        lineHeight: 0.9,
+                        letterSpacing: "-0.03em",
+                        textTransform: "uppercase",
+                        color: "#eaeaea",
+                        maxHeight: "100%",
+                        overflow: "hidden",
                       },
+                      children: title,
                     },
-                    {
-                      type: "div",
-                      props: {
-                        style: {
-                          display: "flex",
-                          justifyContent: "space-between",
-                          width: "100%",
-                          marginBottom: "8px",
-                          fontSize: 28,
-                        },
-                        children: [
-                          {
-                            type: "span",
-                            props: {
-                              children: [
-                                "by ",
-                                {
-                                  type: "span",
-                                  props: {
-                                    style: { color: "transparent" },
-                                    children: '"',
-                                  },
-                                },
-                                {
-                                  type: "span",
-                                  props: {
-                                    style: {
-                                      overflow: "hidden",
-                                      fontWeight: "bold",
-                                    },
-                                    children: post.data.author,
-                                  },
-                                },
-                              ],
-                            },
-                          },
-                          {
-                            type: "span",
-                            props: {
-                              style: { overflow: "hidden", fontWeight: "bold" },
-                              children: SITE.title,
-                            },
-                          },
-                        ],
-                      },
-                    },
-                  ],
+                  },
                 },
               },
-            },
+              row(
+                {
+                  type: "div",
+                  props: {
+                    style: { display: "flex", alignItems: "center" },
+                    children: [
+                      {
+                        type: "div",
+                        props: {
+                          style: {
+                            width: 24,
+                            height: 24,
+                            background: "#ff2a2a",
+                            marginRight: 18,
+                          },
+                        },
+                      },
+                      label(by),
+                    ],
+                  },
+                },
+                label(date),
+                { borderTop: "1px solid #333" }
+              ),
+            ],
           },
-        ],
+        },
       },
     },
     {
@@ -222,7 +131,7 @@ export default async post => {
       height: 630,
       embedFont: true,
       fonts: await loadGoogleFonts(
-        post.data.title + post.data.author + SITE.title + "by"
+        (title + by + date + topLeft + topRight).toUpperCase() + title + by
       ),
     }
   );

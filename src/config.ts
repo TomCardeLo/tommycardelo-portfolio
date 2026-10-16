@@ -4,7 +4,7 @@ export const SITE = {
   profile: "https://tommycardelo.com/",
   desc: "Data Scientist & AI Engineer | Automation & ML systems",
   title: "Tommy CardeLo",
-  ogImage: "og-image.jpg",
+  ogImage: "",
   postPerIndex: 4,
   postPerPage: 6,
   scheduledPostMargin: 15 * 60 * 1000,
