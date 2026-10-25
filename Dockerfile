@@ -1,5 +1,5 @@
 # ===== Build stage =====
-FROM node:20-alpine AS build
+FROM node:22.23.4-alpine3.23 AS build
 WORKDIR /app
 
 # Copia los manifiestos primero (mejor caché)
